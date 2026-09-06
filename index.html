@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Criss Cross — Play Tic-Tac-Toe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <header class="hero">
+        <div class="brand-row">
+          <span class="brand-mark" aria-hidden="true">×</span>
+          <p class="eyebrow">A tiny game for two</p>
+        </div>
+        <h1>Criss <em>Cross</em></h1>
+        <p class="intro">Take turns. Claim three squares. Try not to gloat.</p>
+      </header>
+
+      <section class="game-card" aria-label="Criss cross game">
+        <div class="mode-picker" aria-label="Game mode">
+          <button class="mode-button selected" type="button" data-mode="friend" aria-pressed="true">With a friend</button>
+          <button class="mode-button" type="button" data-mode="ai" aria-pressed="false"><span class="ai-spark" aria-hidden="true">✦</span> Play the AI</button>
+        </div>
+        <div class="status-row">
+          <p id="turn-status" class="turn-status" aria-live="polite"><span class="status-dot x"></span>X starts the round</p>
+          <button id="reset-round" class="text-button" type="button">New round <span aria-hidden="true">↗</span></button>
+        </div>
+
+        <div id="board" class="board" aria-label="Tic-tac-toe board">
+          <button class="square" type="button" aria-label="Top left, empty" data-index="0"></button>
+          <button class="square" type="button" aria-label="Top middle, empty" data-index="1"></button>
+          <button class="square" type="button" aria-label="Top right, empty" data-index="2"></button>
+          <button class="square" type="button" aria-label="Middle left, empty" data-index="3"></button>
+          <button class="square" type="button" aria-label="Middle, empty" data-index="4"></button>
+          <button class="square" type="button" aria-label="Middle right, empty" data-index="5"></button>
+          <button class="square" type="button" aria-label="Bottom left, empty" data-index="6"></button>
+          <button class="square" type="button" aria-label="Bottom middle, empty" data-index="7"></button>
+          <button class="square" type="button" aria-label="Bottom right, empty" data-index="8"></button>
+        </div>
+
+        <div class="scoreboard" aria-label="Scoreboard">
+          <div class="player-score player-x">
+            <span class="player-symbol">×</span>
+            <div><span class="player-name">Player X</span><strong id="x-score">0</strong></div>
+          </div>
+          <div class="round-count"><span>ROUND</span><strong id="round-number">01</strong></div>
+          <div class="player-score player-o">
+            <div><span id="o-name" class="player-name">Player O</span><strong id="o-score">0</strong></div>
+            <span class="player-symbol">○</span>
+          </div>
+        </div>
+
+        <aside class="coach" aria-labelledby="coach-title">
+          <div class="coach-heading">
+            <div><span class="coach-kicker"><span aria-hidden="true">✦</span> powered by an LLM</span><h2 id="coach-title">Strategy coach</h2></div>
+            <span class="coach-orb" aria-hidden="true"></span>
+          </div>
+          <p id="coach-response" class="coach-response" aria-live="polite">Ask for a smart read of the board whenever you want a second opinion.</p>
+          <div class="coach-actions">
+            <button type="button" class="coach-button" data-coach-request="Suggest the strongest next move and explain why in one concise sentence.">Best move</button>
+            <button type="button" class="coach-button" data-coach-request="Identify the biggest tactical threat on this board and how to respond, in one concise sentence.">Spot a threat</button>
+            <button type="button" class="coach-button" data-coach-request="Give a brief, playful coaching tip for this exact board position.">Coach me</button>
+          </div>
+        </aside>
+      </section>
+
+      <footer><span>First to three in a row wins.</span><button id="clear-scores" type="button">Clear scores</button></footer>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
